@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Post>
+
+@{
+    ViewData["Title"] = "All Pages";
+}
+
+<div class="row my-3">
+    <div class="col-sm-6">
+        <h1>Manage Pages</h1>
+    </div>
+    <div class="col-sm-6 text-end m-auto">
+        <a asp-action="Create" asp-controller="Post" class="btn btn-primary">
+            <i class="fa-regular fa-plus"></i> &nbsp; Create New Page
+        </a>
+    </div>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="text-center">
+            <tr>
+                <th>#</th>
+                <th>Page Title</th>
+                <th>Page URL</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var pages in Model)
+            {
+                <tr>
+                    <td>@pages.Id</td>
+                    <td>@pages.PageTitle</td>
+                    <td>@pages.PageUrl</td>
+                    <td>
+                        <a asp-action="DynamicPage" asp-controller="Post" asp-route-pageUrl="@pages.PageUrl" class="btn text-primary">
+                            <i class="fa-sharp fa-solid fa-paper-plane"></i>
+                        </a>
+                        <a asp-action="Edit" asp-controller="Post" asp-route-id="@pages.Id" class="btn text-warning">
+                            <i class="fa-solid fa-file-pen"></i>
+                        </a>
+                        <a asp-action="Delete" asp-controller="Post" asp-route-id="@pages.Id" class="btn text-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

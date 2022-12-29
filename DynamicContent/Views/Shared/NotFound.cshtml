@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Not Found";
+}
+
+<div class="mt-3 text-center">
+    <img src="/images/error.jpg" alt="error" style="width: 400px"/>
+    <div class="mt-3 text-danger">
+        @if(ViewBag.ErrorMessage == null)
+        {
+            <h1>OOPS! PAGE NOT FOUND</h1>
+        }
+        else
+        {
+            <h1>@ViewBag.ErrorMessage</h1>
+        }
+    </div>
+    <div class="mt-3">
+        <a asp-action="index" asp-controller="home" class="btn btn-outline-primary">GO TO HOMEPAGE</a>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "User Login";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="max-width: 100vw; min-height: 85vh">
+    <div class="card" style="width: 18rem;">
+        <form method="post" class="m-2">
+            <div class="text-center">
+                <img src="~/images/user.jpg" style="height: 60px" />
+                <h1>User Login</h1>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    <label asp-for="RememberMe" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a asp-action="index" asp-controller="home" class="btn btn-secondary">Back</a>
+            </div>
+            <div>
+                Don't have an account? Register
+                <a asp-action="Register" asp-controller="Account" asp-route-returnUrl="@Context.Request.Query["returnUrl"]" class="link-success">here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
